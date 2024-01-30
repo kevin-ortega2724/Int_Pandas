@@ -1,0 +1,917 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>README.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="m%C3%B3dulo-1-introducci%C3%B3n-a-pandas">Módulo 1: Introducción a Pandas</h1>
+<h1 id="presentaci%C3%B3n-y-objetivos-del-curso">Presentación y Objetivos del Curso</h1>
+<p align="center" style="border: 2px solid black; padding: 10px; border-radius: 10px;">
+  <img src="fig1.svg" alt="Descripción de la imagen">
+</p>
+<h1 id="introducci%C3%B3n-a-pandas-con-python">Introducción a Pandas con Python</h1>
+<h2 id="objetivos-del-curso">Objetivos del Curso</h2>
+<ul>
+<li>Comprender la importancia de Pandas en el análisis de datos.</li>
+<li>Aprender los conceptos básicos de Pandas.</li>
+</ul>
+<h1 id="%C2%BFqu%C3%A9-es-pandas">¿Qué es Pandas?</h1>
+<p align="center" style="border: 2px solid black; padding: 10px; border-radius: 10px;">
+  <img src="proce.svg" alt="Descripción de la imagen">
+</p>
+<h2 id="%C2%BFqu%C3%A9-es-pandas">¿Qué es Pandas?</h2>
+<p>Pandas es una biblioteca de Python diseñada para la manipulación y el análisis de datos.
+Proporciona estructuras de datos flexibles y herramientas para trabajar con conjuntos de datos estructurados.</p>
+<h1 id="instalaci%C3%B3n-de-pandas-en-colab">Instalación de Pandas en Colab</h1>
+<h2 id="instalaci%C3%B3n-de-pandas-en-google-colab">Instalación de Pandas en Google Colab</h2>
+<p>Para instalar pandas en Colab, ejecute el siguiente comando:</p>
+<pre class="hljs"><code><div>!pip install pandas
+</div></code></pre>
+<h1 id="estructuras-de-datos-en-pandas">Estructuras de Datos en Pandas</h1>
+<p>Pandas ofrece dos estructuras principales: Series y DataFrames.</p>
+<ul>
+<li>Series: Una serie es una estructura de una dimensión que puede contener cualquier tipo de datos.</li>
+<li>DataFrames: Un DataFrame es una estructura bidimensional, similar a una tabla, que organiza los datos en filas y columnas.</li>
+</ul>
+<h2 id="series-en-pandas">Series en Pandas</h2>
+<p>Una <strong>Serie</strong> en Pandas es una estructura de datos unidimensional que puede contener cualquier tipo de datos. Se puede ver como una columna en una hoja de cálculo o como un array unidimensional. Para crear una Serie, simplemente utilizamos el constructor <code>pd.Series()</code> de Pandas:</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">import</span> pandas <span class="hljs-keyword">as</span> pd
+
+<span class="hljs-comment"># Crear una Serie</span>
+mi_serie = pd.Series([<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>])
+print(mi_serie)
+</div></code></pre>
+<p>0    1
+1    2
+2    3
+3    4
+4    5
+dtype: int64</p>
+<h2 id="dataframes-en-pandas">DataFrames en Pandas</h2>
+<p>Un <strong>DataFrame</strong> en Pandas es una estructura de datos bidimensional similar a una tabla de base de datos <strong>SQL</strong> o una hoja de cálculo de <strong>Excel</strong>. Es como un conjunto de Series que comparten el mismo índice. Para crear un DataFrame, use el constructor <code>pd.DataFrame()</code>:</p>
+<pre class="hljs"><code><div><span class="hljs-comment"># Crear un DataFrame</span>
+datos = {<span class="hljs-string">'Nombre'</span>: [<span class="hljs-string">'Alice'</span>, <span class="hljs-string">'Bob'</span>, <span class="hljs-string">'Charlie'</span>],
+         <span class="hljs-string">'Edad'</span>: [<span class="hljs-number">25</span>, <span class="hljs-number">30</span>, <span class="hljs-number">35</span>],
+         <span class="hljs-string">'Ciudad'</span>: [<span class="hljs-string">'Ciudad A'</span>, <span class="hljs-string">'Ciudad B'</span>, <span class="hljs-string">'Ciudad C'</span>]}
+
+mi_dataframe = pd.DataFrame(datos)
+
+
+mi_dataframe.head()
+</div></code></pre>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Nombre</th>
+<th>Edad</th>
+<th>Ciudad</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>Alice</td>
+<td>25</td>
+<td>Ciudad A</td>
+</tr>
+<tr>
+<td>1</td>
+<td>Bob</td>
+<td>30</td>
+<td>Ciudad B</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Charlie</td>
+<td>35</td>
+<td>Ciudad C</td>
+</tr>
+</tbody>
+</table>
+<pre class="hljs"><code><div>mi_dataframe.describe() <span class="hljs-comment">#Devuelve datos estadísticos del DataFrame</span>
+</div></code></pre>
+<table>
+<thead>
+<tr>
+<th></th>
+<th style="text-align:center">Edad</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>count</td>
+<td style="text-align:center">3.0</td>
+</tr>
+<tr>
+<td>mean</td>
+<td style="text-align:center">30.0</td>
+</tr>
+<tr>
+<td>std</td>
+<td style="text-align:center">5.0</td>
+</tr>
+<tr>
+<td>min</td>
+<td style="text-align:center">25.0</td>
+</tr>
+<tr>
+<td>25%</td>
+<td style="text-align:center">27.5</td>
+</tr>
+<tr>
+<td>50%</td>
+<td style="text-align:center">30.0</td>
+</tr>
+<tr>
+<td>75%</td>
+<td style="text-align:center">32.5</td>
+</tr>
+<tr>
+<td>max</td>
+<td style="text-align:center">35.0</td>
+</tr>
+</tbody>
+</table>
+<pre class="hljs"><code><div><span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt
+
+plt.bar(mi_dataframe[<span class="hljs-string">'Nombre'</span>], mi_dataframe[<span class="hljs-string">'Edad'</span>])
+plt.bar(mi_dataframe[<span class="hljs-string">'Ciudad'</span>], mi_dataframe[<span class="hljs-string">'Edad'</span>], color=<span class="hljs-string">'teal'</span>)
+plt.xlabel(<span class="hljs-string">'Nombre'</span>)
+plt.ylabel(<span class="hljs-string">'Edad'</span>)
+plt.title(<span class="hljs-string">'Edades de las Personas'</span>)
+plt.show()
+</div></code></pre>
+<p align="center" style="border: 2px solid black; padding: 10px; border-radius: 10px;">
+  <img src="hist1.png" alt="Descripción de la imagen">
+</p>
+<pre class="hljs"><code><div>plt.pie(mi_dataframe[<span class="hljs-string">'Ciudad'</span>].value_counts(), labels=mi_dataframe[<span class="hljs-string">'Ciudad'</span>].unique(), autopct=<span class="hljs-string">'%1.1f%%'</span>)
+plt.title(<span class="hljs-string">'Distribución de Ciudades'</span>)
+plt.show()
+</div></code></pre>
+<p align="center" style="border: 2px solid black; padding: 10px; border-radius: 10px;">
+  <img src="past1.png" alt="Descripción de la imagen">
+</p>
+<h1 id="experimento">Experimento</h1>
+<h2 id="an%C3%A1lisis-y-visualizaci%C3%B3n-de-datos-de-ventas">Análisis y Visualización de Datos de Ventas</h2>
+<p>El objetivo de este experimento es introducir a los participantes en la manipulación y visualización de datos utilizando la biblioteca pandas en Python. Se utilizará un conjunto de datos ficticio de ventas generadas aleatoriamente para realizar operaciones básicas de manipulación y generar visualizaciones informativas.</p>
+<h3 id="paso-1-importar-bibliotecas">Paso 1: Importar Bibliotecas</h3>
+<pre class="hljs"><code><div><span class="hljs-keyword">import</span> pandas <span class="hljs-keyword">as</span> pd
+<span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np
+<span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt
+</div></code></pre>
+<h3 id="paso-2-generar-datos-aleatorios-de-ventas">Paso 2: Generar Datos Aleatorios de Ventas</h3>
+<pre class="hljs"><code><div><span class="hljs-comment"># Crear un DataFrame con datos aleatorios de ventas</span>
+np.random.seed(<span class="hljs-number">42</span>)  <span class="hljs-comment"># Para reproducibilidad</span>
+fecha_inicio = pd.to_datetime(<span class="hljs-string">'2022-01-01'</span>)
+fecha_fin = pd.to_datetime(<span class="hljs-string">'2022-12-31'</span>)
+fechas = pd.date_range(fecha_inicio, fecha_fin, freq=<span class="hljs-string">'D'</span>)
+
+datos = {
+    <span class="hljs-string">'ID Producto'</span>: np.random.choice(range(<span class="hljs-number">1</span>, <span class="hljs-number">6</span>), size=len(fechas)),
+    <span class="hljs-string">'Nombre del Producto'</span>: np.random.choice([<span class="hljs-string">'Producto A'</span>, <span class="hljs-string">'Producto B'</span>, <span class="hljs-string">'Producto C'</span>], size=len(fechas)),
+    <span class="hljs-string">'Cantidad'</span>: np.random.randint(<span class="hljs-number">1</span>, <span class="hljs-number">20</span>, size=len(fechas)),
+    <span class="hljs-string">'Precio Unitario'</span>: np.random.uniform(<span class="hljs-number">10</span>, <span class="hljs-number">50</span>, size=len(fechas))
+}
+
+df = pd.DataFrame(datos, index=fechas)
+
+df
+</div></code></pre>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>ID Producto</th>
+<th>Nombre del Producto</th>
+<th>Cantidad</th>
+<th>Precio Unitario</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2022-01-01</td>
+<td>4</td>
+<td>Producto B</td>
+<td>19</td>
+<td>17.121439</td>
+</tr>
+<tr>
+<td>2022-01-02</td>
+<td>5</td>
+<td>Producto A</td>
+<td>13</td>
+<td>48.442813</td>
+</tr>
+<tr>
+<td>2022-01-03</td>
+<td>3</td>
+<td>Producto B</td>
+<td>13</td>
+<td>15.946509</td>
+</tr>
+<tr>
+<td>2022-01-04</td>
+<td>5</td>
+<td>Producto C</td>
+<td>4</td>
+<td>26.584965</td>
+</tr>
+<tr>
+<td>2022-01-05</td>
+<td>5</td>
+<td>Producto C</td>
+<td>1</td>
+<td>13.413987</td>
+</tr>
+<tr>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr>
+<td>2022-12-27</td>
+<td>4</td>
+<td>Producto A</td>
+<td>1</td>
+<td>10.884942</td>
+</tr>
+<tr>
+<td>2022-12-28</td>
+<td>4</td>
+<td>Producto B</td>
+<td>17</td>
+<td>22.944409</td>
+</tr>
+<tr>
+<td>2022-12-29</td>
+<td>4</td>
+<td>Producto A</td>
+<td>11</td>
+<td>29.545728</td>
+</tr>
+<tr>
+<td>2022-12-30</td>
+<td>5</td>
+<td>Producto B</td>
+<td>18</td>
+<td>40.816297</td>
+</tr>
+<tr>
+<td>2022-12-31</td>
+<td>4</td>
+<td>Producto A</td>
+<td>17</td>
+<td>37.331815</td>
+</tr>
+</tbody>
+</table>
+<p>365 rows × 4 columns</p>
+<h3 id="paso-3-explorar-el-conjunto-de-datos">Paso 3: Explorar el Conjunto de Datos</h3>
+<pre class="hljs"><code><div><span class="hljs-comment"># Mostrar las primeras filas del conjunto de datos</span>
+print(df.head())
+</div></code></pre>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>ID Producto</th>
+<th>Nombre del Producto</th>
+<th>Cantidad</th>
+<th>Precio Unitario</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2022-01-01</td>
+<td>4</td>
+<td>Producto B</td>
+<td>19</td>
+<td>17.121439</td>
+</tr>
+<tr>
+<td>2022-01-02</td>
+<td>5</td>
+<td>Producto A</td>
+<td>13</td>
+<td>48.442813</td>
+</tr>
+<tr>
+<td>2022-01-03</td>
+<td>3</td>
+<td>Producto B</td>
+<td>13</td>
+<td>15.946509</td>
+</tr>
+<tr>
+<td>2022-01-04</td>
+<td>5</td>
+<td>Producto C</td>
+<td>4</td>
+<td>26.584965</td>
+</tr>
+<tr>
+<td>2022-01-05</td>
+<td>5</td>
+<td>Producto C</td>
+<td>1</td>
+<td>13.413987</td>
+</tr>
+</tbody>
+</table>
+<pre class="hljs"><code><div><span class="hljs-comment"># Obtener información general del conjunto de datos</span>
+print(df.info())
+
+</div></code></pre>
+<p>&lt;class 'pandas.core.frame.DataFrame'&gt;
+DatetimeIndex: 365 entries, 2022-01-01 to 2022-12-31
+Freq: D
+Data columns (total 4 columns):
+#   Column               Non-Null Count  Dtype<br>
+---  ------               --------------  -----<br>
+0   ID Producto          365 non-null    int64<br>
+1   Nombre del Producto  365 non-null    object
+2   Cantidad             365 non-null    int64<br>
+3   Precio Unitario      365 non-null    float64
+dtypes: float64(1), int64(2), object(1)
+memory usage: 14.3+ KB
+None</p>
+<pre class="hljs"><code><div><span class="hljs-comment"># Estadísticas descriptivas</span>
+print(df.describe())
+</div></code></pre>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>ID Producto</th>
+<th>Cantidad</th>
+<th>Precio Unitario</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>count</strong></td>
+<td>365.0</td>
+<td>365.0</td>
+<td>365.0</td>
+</tr>
+<tr>
+<td><strong>mean</strong></td>
+<td>2.94</td>
+<td>9.68</td>
+<td>30.08</td>
+</tr>
+<tr>
+<td><strong>std</strong></td>
+<td>1.40</td>
+<td>5.55</td>
+<td>11.96</td>
+</tr>
+<tr>
+<td><strong>min</strong></td>
+<td>1.0</td>
+<td>1.0</td>
+<td>10.26</td>
+</tr>
+<tr>
+<td><strong>25%</strong></td>
+<td>2.0</td>
+<td>5.0</td>
+<td>19.24</td>
+</tr>
+<tr>
+<td><strong>50%</strong></td>
+<td>3.0</td>
+<td>9.0</td>
+<td>30.98</td>
+</tr>
+<tr>
+<td><strong>75%</strong></td>
+<td>4.0</td>
+<td>15.0</td>
+<td>40.69</td>
+</tr>
+<tr>
+<td><strong>max</strong></td>
+<td>5.0</td>
+<td>19.0</td>
+<td>49.92</td>
+</tr>
+</tbody>
+</table>
+<h3 id="paso-4-manipulaci%C3%B3n-de-datos">Paso 4: Manipulación de Datos</h3>
+<pre class="hljs"><code><div><span class="hljs-comment"># Agregar una columna de ingresos totales</span>
+df[<span class="hljs-string">'Ingresos Totales'</span>] = df[<span class="hljs-string">'Cantidad'</span>] * df[<span class="hljs-string">'Precio Unitario'</span>]
+</div></code></pre>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>ID Producto</th>
+<th>Nombre del Producto</th>
+<th>Cantidad</th>
+<th>Precio Unitario</th>
+<th>Ingresos Totales</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2022-01-01</td>
+<td>4</td>
+<td>Producto B</td>
+<td>19</td>
+<td>17.121439</td>
+<td>325.307335</td>
+</tr>
+<tr>
+<td>2022-01-02</td>
+<td>5</td>
+<td>Producto A</td>
+<td>13</td>
+<td>48.442813</td>
+<td>629.756565</td>
+</tr>
+<tr>
+<td>2022-01-03</td>
+<td>3</td>
+<td>Producto B</td>
+<td>13</td>
+<td>15.946509</td>
+<td>207.304618</td>
+</tr>
+<tr>
+<td>2022-01-04</td>
+<td>5</td>
+<td>Producto C</td>
+<td>4</td>
+<td>26.584965</td>
+<td>106.339860</td>
+</tr>
+<tr>
+<td>2022-01-05</td>
+<td>5</td>
+<td>Producto C</td>
+<td>1</td>
+<td>13.413987</td>
+<td>13.413987</td>
+</tr>
+<tr>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr>
+<td>2022-12-27</td>
+<td>4</td>
+<td>Producto A</td>
+<td>1</td>
+<td>10.884942</td>
+<td>10.884942</td>
+</tr>
+<tr>
+<td>2022-12-28</td>
+<td>4</td>
+<td>Producto B</td>
+<td>17</td>
+<td>22.944409</td>
+<td>390.054949</td>
+</tr>
+<tr>
+<td>2022-12-29</td>
+<td>4</td>
+<td>Producto A</td>
+<td>11</td>
+<td>29.545728</td>
+<td>325.003004</td>
+</tr>
+<tr>
+<td>2022-12-30</td>
+<td>5</td>
+<td>Producto B</td>
+<td>18</td>
+<td>40.816297</td>
+<td>734.693341</td>
+</tr>
+<tr>
+<td>2022-12-31</td>
+<td>4</td>
+<td>Producto A</td>
+<td>17</td>
+<td>37.331815</td>
+<td>634.640856</td>
+</tr>
+</tbody>
+</table>
+<p>365 rows × 5 columns</p>
+<h3 id="paso-5-visualizaci%C3%B3n-de-datos">Paso 5: Visualización de Datos</h3>
+<pre class="hljs"><code><div><span class="hljs-comment"># Visualizar las ventas totales a lo largo del tiempo</span>
+plt.figure(figsize=(<span class="hljs-number">12</span>, <span class="hljs-number">6</span>))
+plt.plot(df.index, df[<span class="hljs-string">'Ingresos Totales'</span>], label=<span class="hljs-string">'Ingresos Totales'</span>, color=<span class="hljs-string">'blue'</span>)
+plt.title(<span class="hljs-string">'Ingresos Totales a lo largo del Tiempo'</span>)
+plt.xlabel(<span class="hljs-string">'Fecha'</span>)
+plt.ylabel(<span class="hljs-string">'Ingresos Totales ($)'</span>)
+plt.legend()
+plt.show()
+</div></code></pre>
+<p align="center" style="border: 2px solid black; padding: 10px; border-radius: 10px;">
+  <img src="tiem.png" alt="Descripción de la imagen">
+</p>
+<h3 id="paso-6-an%C3%A1lisis-adicional">Paso 6: Análisis Adicional</h3>
+<pre class="hljs"><code><div><span class="hljs-comment"># Calcular el producto más vendido</span>
+producto_mas_vendido = df.groupby(<span class="hljs-string">'Nombre del Producto'</span>)[<span class="hljs-string">'Cantidad'</span>].sum().idxmax()
+print(<span class="hljs-string">f'El producto más vendido es: <span class="hljs-subst">{producto_mas_vendido}</span>'</span>)
+
+<span class="hljs-comment"># Visualizar los productos más vendidos</span>
+productos_mas_vendidos = df.groupby(<span class="hljs-string">'Nombre del Producto'</span>)[<span class="hljs-string">'Cantidad'</span>].sum().sort_values(ascending=<span class="hljs-literal">False</span>)
+plt.figure(figsize=(<span class="hljs-number">10</span>, <span class="hljs-number">6</span>))
+productos_mas_vendidos.plot(kind=<span class="hljs-string">'bar'</span>, color=<span class="hljs-string">'green'</span>)
+plt.title(<span class="hljs-string">'Productos Más Vendidos'</span>)
+plt.xlabel(<span class="hljs-string">'Nombre del Producto'</span>)
+plt.ylabel(<span class="hljs-string">'Cantidad Vendida'</span>)
+plt.show()
+</div></code></pre>
+<pre class="hljs"><code><div>El producto más vendido es: Producto A
+</div></code></pre>
+<p align="center" style="border: 2px solid black; padding: 10px; border-radius: 10px;">
+  <img src="pro.png" alt="Descripción de la imagen">
+</p>
+<h1 id="comentarios-y-an%C3%A1lisis">Comentarios y Análisis</h1>
+<p>Diversidad de Productos: El conjunto de datos refleja la venta de varios productos (Producto A, Producto B y Producto C) a lo largo del año. Esta diversidad podría indicar una oferta variada para los clientes.</p>
+<p>Cantidad de Ventas: Se observa que las cantidades de venta varían, con productos vendiendo desde 1 hasta 19 unidades en un solo día. Esto sugiere una dinámica de demanda cambiante o posiblemente estrategias de lanzamiento de nuevos productos.</p>
+<p>Precio Unitario: El precio unitario de los productos también varía considerablemente, desde alrededor de 10 hasta casi 50. Este rango de precios puede influir en los ingresos totales y la rentabilidad.</p>
+<p>Ingresos Totales: Los ingresos totales reflejan la multiplicación de la cantidad vendida por el precio unitario. Hay días con ingresos significativos, posiblemente asociados a días de alta demanda o ventas de productos más costosos.</p>
+<p>Producto Más Vendido: Se puede determinar el producto más vendido al analizar la cantidad total vendida de cada producto. Este tipo de análisis puede ayudar en la toma de decisiones sobre la gestión de inventario y estrategias de marketing.</p>
+<p>Análisis Temporal: La variación de las ventas a lo largo del tiempo podría revelar patrones estacionales o tendencias a considerar al planificar estrategias de marketing y gestión de inventario.</p>
+<p>Rentabilidad del Producto: Analizar la relación entre el precio unitario y la cantidad vendida puede proporcionar información sobre la rentabilidad de cada producto. Algunos productos pueden generar mayores ingresos a pesar de tener una cantidad de ventas menor debido a su precio unitario más alto.</p>
+<p>Optimización de Inventario: La información sobre la cantidad vendida y la frecuencia puede ser valiosa para la optimización del inventario, asegurando que haya suficiente stock para satisfacer la demanda sin incurrir en excesos no deseados.</p>
+<p>Tendencias de Ventas: Al observar las tendencias de ventas, se pueden identificar períodos de aumento o disminución de la demanda. Esto puede ser útil para ajustar estrategias de marketing o lanzar promociones en momentos estratégicos.</p>
+<p>Necesidad de Análisis Adicional: Aunque este conjunto de datos proporciona información valiosa, análisis más detallados, como la segmentación de clientes, pueden proporcionar una comprensión más profunda del comportamiento del consumidor y facilitar decisiones más precisas.</p>
+
+</body>
+</html>
