@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Módulo 1: Introducción a Pandas
 
 # Presentación y Objetivos del Curso
@@ -307,3 +308,7 @@ Tendencias de Ventas: Al observar las tendencias de ventas, se pueden identifica
  Necesidad de Análisis Adicional: Aunque este conjunto de datos proporciona información valiosa, análisis más detallados, como la segmentación de clientes, pueden proporcionar una comprensión más profunda del comportamiento del consumidor y facilitar decisiones más precisas.
 
 
+=======
+# Int_Pandas
+Este es una guía básica de la manipulación de datos con Pandas.
+>>>>>>> origin/main
